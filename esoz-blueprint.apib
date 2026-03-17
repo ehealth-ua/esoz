@@ -894,7 +894,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 + Response 200 (application/json)
     + Attributes (Response_TIL_GetDictionaries)
         + data (array)
-             + object (TIL_GetDictionary)
+             + (TIL_GetDictionary)
                  + labels (array)
                      + SYSTEM
                      + EXTERNAL
@@ -1530,15 +1530,17 @@ List consists of legal entities with parameter `is_active = true`.
     + legal_entity_id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,optional)
     + settlement_id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,optional)
     + type: PRIMARY_CARE (enum,optional)
-        - PRIMARY_CARE
-        - OUTPATIENT
-        - EMERGENCY
-        - PHARMACY
+        + Members
+            + PRIMARY_CARE
+            + OUTPATIENT
+            + EMERGENCY
+            + PHARMACY
     + status: ACTIVE (enum,optional)
-        - ACTIVE
-        - SUSPENDED
-        - CLOSED
-        - REORGANIZED
+        + Members
+            + ACTIVE
+            + SUSPENDED
+            + CLOSED
+            + REORGANIZED
     + nhs_verified: false (boolean,optional)
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
@@ -2009,8 +2011,9 @@ This method is designed to obtain list of contracts with filters. This method re
     + contractor_owner_id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,optional) - id of legal entity owner.
     + nhs_signer_id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,optional) - id of nhs employee
     + status: VERIFIED (enum,optional) - current contract status.
-        - TERMINATED
-        - VERIFIED
+        + Members
+            + TERMINATED
+            + VERIFIED
     + is_suspended: true (boolean,optional) - wether contract is active
     + date_from_start_date: `2018-01-01` (string,optional)
     + date_to_start_date: `2019-01-01` (string,optional)
@@ -2350,14 +2353,15 @@ This method is designed to obtain list of contract request with filters. This me
     + issue_city: `КИЇВ` (string,optional) - contract request place
     + edrpou: 12345678 (string,optional) - legal entity edrpou
     + status: NEW (enum,optional) - current status on contract request.
-        - NEW
-        - IN_PROCESS
-        - APPROVED
-        - DECLINED
-        - TERMINATED
-        - PENDING_NHS_SIGN
-        - NHS_SIGNED
-        - SIGNED
+        + Members
+            + NEW
+            + IN_PROCESS
+            + APPROVED
+            + DECLINED
+            + TERMINATED
+            + PENDING_NHS_SIGN
+            + NHS_SIGNED
+            + SIGNED
     + contract_number: `0000-9EAX-XT7X-3115` (string,optional) - human readable number of contract request.
     + medical_program_id: `2075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,optional) - id of a program that is a subject of contract
     + page: 2 (number,optional) - Page number.
@@ -2544,11 +2548,12 @@ Method returns shortened data structure. Use [**Get Employee details**](https://
     + legal_entity_id: `d290f1ee-6c54-4b01-90e6-d701748f0152` (string,optional) - filter employees by legal_entity id
     + division_id: `d290f1ee-6c54-4b01-90e6-d701748f0152` (string,optional)
     + status: APPROVED (enum,optional) - filter employees by status
-        - APPROVED
-        - STOPPED
-        - ENTERED IN ERROR
-        - AUTODEACTIVATED
-        - REORGANIZED
+        + Members
+            + APPROVED
+            + STOPPED
+            + ENTERED IN ERROR
+            + AUTODEACTIVATED
+            + REORGANIZED
     + employee_type: DOCTOR (string,optional)
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
@@ -2746,9 +2751,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + legal_entity_name: `Лимич Медікал` (string,optional)
     + no_tax_id: true (boolean,optional)
     + status: NEW (enum,optional)
-        - NEW
-        - REJECTED
-        - APPROVED
+        + Members
+            + NEW
+            + REJECTED
+            + APPROVED
         + Default: NEW
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
@@ -3471,11 +3477,12 @@ More detailed information - https://e-health-ua.atlassian.net/wiki/x/BADDIw
 
 + Parameters
     + status: APPROVED (enum,optional)
-        - NEW
-        - APPROVED
-        - SIGNED
-        - REJECTED
-        - CANCELLED
+        + Members
+            + NEW
+            + APPROVED
+            + SIGNED
+            + REJECTED
+            + CANCELLED
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
@@ -4049,16 +4056,18 @@ If declaration request is created by v2,the field person_id will be empty
     + employee_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional) - user_id of a doctor.
     + legal_entity_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional) - MSP ID.
     + status: active (enum,optional)
-        - NEW
-        - APPROVED
-        - SIGNED
-        - REJECTED
-        - CANCELLED
-        - EXPIRED
+        + Members
+            + NEW
+            + APPROVED
+            + SIGNED
+            + REJECTED
+            + CANCELLED
+            + EXPIRED
     + channel: MIS (enum,optional)
-        - MIS
-        - PIS
-        - CABINET
+        + Members
+            + MIS
+            + PIS
+            + CABINET
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
@@ -4999,9 +5008,10 @@ Returns all the activities related to the care plan in patient context.
     + care_plan_id: `9183a36b-4d45-4244-9339-63d81cd08d9c` (string,required) - Care Plan identifier.
     + author: `9183a36b-4d45-4244-9339-63d81cd08d9c` (string,optional) - author of the activity.
     + kind: service_request (enum,optional) - kind of the activity.
-        - service_request
-        - medication_request
-        - device_request
+        + Members
+            + service_request
+            + medication_request
+            + device_request
     + managing_organization_id: `80a9e15b-b71b-4caf-8f2e-ff247e8a5677` (string,optional) - legal entity id
     + status: scheduled (string,optional) - Care plan activity status
     + page: 2 (number,optional) - Page number
@@ -5688,10 +5698,11 @@ to get Medication Request by Id.
     + legal_entity_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional) - legal entity identifier.
     + employee_id: `7124259c-eeb1-4cbb-acac-ada2162675d1` (string,optional) - user_id of a doctor.
     + status: ACTIVE (enum,optional). Default ACTIVE
-        - ACTIVE
-        - COMPLETED
-        - EXPIRED
-        - REJECTED
+        + Members
+            + ACTIVE
+            + COMPLETED
+            + EXPIRED
+            + REJECTED
     + request_number : `0000-243P-1X53-EH38` (string,optional) - Public medication request human readable number
     + created_from: `2017-08-17` (string,optional) - Medication request creation date period start,which is determined by the external system. Format *DATE '2017-08-17'*
     + created_to: `2017-08-30` (string,optional) - Medication request creation date period end,which is determined by the external system. Format *DATE '2017-08-30'*
@@ -5740,10 +5751,11 @@ Use [**Get medication requests details**](https://esoz.docs.apiary.io/#reference
     + employee_id: `7124259c-eeb1-4cbb-acac-ada2162675d1` (string,optional) - user_id of a doctor.
     + person_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional) - person_id of a patient.
     + status: ACTIVE (enum,optional). Default ACTIVE
-        - ACTIVE
-        - COMPLETED
-        - EXPIRED
-        - REJECTED
+        + Members
+            + ACTIVE
+            + COMPLETED
+            + EXPIRED
+            + REJECTED
     + request_number : `0000-243P-1X53-EH38` (string,optional) - Public medication request human readable number
     + created_from: `2017-08-17` (string,optional) - Medication request creation date period start,which is determined by the external system. Format *DATE '2017-08-17'*
     + created_to: `2017-08-30` (string,optional) - Medication request creation date period end,which is determined by the external system. Format *DATE '2017-08-30'*
@@ -6150,10 +6162,11 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + employee_id: `7124259c-eeb1-4cbb-acac-ada2162675d1` (string,optional) - user_id of a doctor.
     + person_id: 01352B970879A80E19B60C15C8E488DA26CABC3B9F7FA71684904A99DBD5ACE4 (string,optional) - hash of person_id of a patient.
     + status: ACTIVE (enum,optional). Default ACTIVE
-        - ACTIVE
-        - COMPLETED
-        - EXPIRED
-        - REJECTED
+        + Members
+            + ACTIVE
+            + COMPLETED
+            + EXPIRED
+            + REJECTED
     + request_number : `0000-243P-1X53-EH38` (string,optional) - Public medication request human readable number
     + created_from: `2017-08-17` (string,optional) - Medication request creation date period start,which is determined by the external system. Format *DATE '2017-08-17'*
     + created_to: `2017-08-30` (string,optional) - Medication request creation date period end,which is determined by the external system. Format *DATE '2017-08-30'*
@@ -6688,10 +6701,11 @@ Use [**Get Medication request requests details**](https://uaehealthapi.docs.apia
     + activity_id: `d1e07d06-d063-4d19-b9ae-88fc1c7a8682` (string,optional) - Unique activity identifier.
     + encounter_id: `7075e0e2-6b57-47fd-aff7-324806efa7e5` (string,optional) - Unique encounter identifier.
     + status: NEW (enum,optional) - Status of medication request request. Default NEW
-        - NEW
-        - SIGNED
-        - EXPIRED
-        - REJECTED
+        + Members
+            + NEW
+            + SIGNED
+            + EXPIRED
+            + REJECTED
     + intent: order (string,optional) - Medication request request intent
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50.
@@ -6723,10 +6737,11 @@ Use [**Get Medication Request Requests Details**](https://esoz.docs.apiary.io/#r
     + employee_id: `7124259c-eeb1-4cbb-acac-ada2162675d1` (string,optional) - user_id of a doctor.
     + person_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional) - person_id of a patient.
     + status: NEW (enum,optional). Default NEW
-        - NEW
-        - SIGNED
-        - EXPIRED
-        - REJECTED
+        + Members
+            + NEW
+            + SIGNED
+            + EXPIRED
+            + REJECTED
     + intent: order (string,optional) - Medication request request intent
     + encounter_id: `7075e0e2-6b57-47fd-aff7-324806efa7e5` (string,optional) - encounter identifier
     + page: 2 (number,optional) - Page number.
@@ -9041,6 +9056,7 @@ This chapter describes the structure of a single Specimen creation. This is not 
         X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
     + Attributes (Specimen_Request)
 
++ Response 200 (application/json)
 ### Get Specimen by Search Params [GET /api/patients/{patient_id}/specimens{?type,status,registered_by,collected_from,collected_to,container_identifier,container_type,parent,request,encounter,page,page_size}]
 
 ESOZ API ID: API-007-063-0002
@@ -11639,14 +11655,14 @@ http code| processing method | Client recommendations
 + id: `90a9e15b-b71b-4caf-8f2e-ff247e8a5600` (string,required) 
 + status : completed (string,required),//  completed | entered-in-error
 + not_given : false (boolean,required),//   Flag for whether immunization was given
-+ vaccine_code : (Codeable_Concept,required),//   Vaccine product administered
++ vaccine_code (Codeable_Concept,required),//   Vaccine product administered
     +  coding (array)
         + (Coding)
             + system: `eHealth/vaccine_codes` (string)
             + code: HepAHepB (string) - `dictionary - eHealth/vaccine_codes`
             
 
-+ context : (Reference_request,required),// Encounter administered as part of
++ context (Reference_request,required),// Encounter administered as part of
     + identifier (Identifier)
         + type (Codeable_Concept)
             + coding (array)
@@ -11676,13 +11692,13 @@ http code| processing method | Client recommendations
 + manufacturer : `VacinePro Manufacturer` (string,optional),// Vaccine manufacturer
 + lot_number : AAJN11K (string,optional),// Vaccine lot number
 + expiration_date : `2018-10-08T09:46:37.694Z` (string,optional),// Vaccine expiration date
-+ site : ( Codeable_Concept,optional),// Body site vaccine  was administered
++ site ( Codeable_Concept,optional),// Body site vaccine  was administered
     +  coding (array)
         + (Coding)
             + system: `eHealth/immunization_body_sites` (string)
             + code: oral (string) - `dictionary - eHealth/immunization_body_sites`
             
-+ route : ( Codeable_Concept ,optional),// How vaccine entered body
++ route ( Codeable_Concept ,optional),// How vaccine entered body
     +  coding (array)
         + (Coding)
             + system: `eHealth/vaccination_routes` (string)
@@ -11711,7 +11727,7 @@ http code| processing method | Client recommendations
                     + code: lack_of_injection_supply (string)
             + text: `відсутність ін'єкційних матеріалів` (string)
 
-+ vaccination_protocols : (array,optional)// What protocols was followed
++ vaccination_protocols (array,optional)// What protocols was followed
     + (object)
         + dose_sequence : 1 (number,optional),// Dose number within series
         + description : Vaccination Protocol Sequence 1 (string,optional),// Details of vaccine protocol
@@ -11723,7 +11739,7 @@ http code| processing method | Client recommendations
                         
         + series : Vaccination Series 1 (string,optional),// Name of vaccine series
         + series_doses : 2 (number,optional),// Recommended number of doses for immunity
-        + target_diseases : (array,required)
+        + target_diseases (array,required)
             + (Codeable_Concept ),//   Disease immunized against
                 +  coding (array)
                     + (Coding)
@@ -11739,14 +11755,14 @@ http code| processing method | Client recommendations
 + inserted_at: `2018-08-02T10:45:16.000Z` (string,required)
 + status : completed (string,required),//  completed | entered-in-error
 + not_given : false (boolean,required),//   Flag for whether immunization was given
-+ vaccine_code : (Codeable_Concept,required),//   Vaccine product administered
++ vaccine_code (Codeable_Concept,required),//   Vaccine product administered
     +  coding (array)
         + (Coding)
             + system: `eHealth/vaccine_codes` (string)
             + code: HepAHepB (string) - `dictionary - eHealth/vaccine_codes`
             
 
-+ context : (Reference_response,required),// Encounter administered as part of
++ context (Reference_response,required),// Encounter administered as part of
     + identifier (Identifier)
         + type (Codeable_Concept)
             + coding (array)
@@ -11783,7 +11799,7 @@ http code| processing method | Client recommendations
             + system: `eHealth/immunization_body_sites` (string)
             + code: oral (string) - `dictionary - eHealth/immunization_body_sites`
             
-+ route : ( Codeable_Concept ,optional),// How vaccine entered body
++ route ( Codeable_Concept ,optional),// How vaccine entered body
     +  coding (array)
         + (Coding)
             + system: `eHealth/vaccination_routes` (string)
@@ -11811,16 +11827,16 @@ http code| processing method | Client recommendations
                     + code: lack_of_injection_supply (string)
             + text: `відсутність ін'єкційних матеріалів` (string)
             
-+ reactions : (array,optional) // Details of a reaction that follows immunization
++ reactions (array,optional) // Details of a reaction that follows immunization
     + (object)
-        + detail : (Reference_response,optional) ,// Additional information on reaction Observation
+        + detail (Reference_response,optional) ,// Additional information on reaction Observation
             + identifier (Identifier)
                 + type (Codeable_Concept)
                     + coding (array)
                         + (Coding)
                             + code: observation (string)
 
-+ vaccination_protocols : (array,optional)// What protocols was followed
++ vaccination_protocols (array,optional)// What protocols was followed
     + (object)
         + dose_sequence : 1 (number,optional),// Dose number within series
         + description : Vaccination Protocol Sequence 1 (string,optional),// Details of vaccine protocol
@@ -11832,7 +11848,7 @@ http code| processing method | Client recommendations
                         
         + series : Vaccination Series 1 (string,optional),// Name of vaccine series
         + series_doses : 2 (number,optional),// Recommended number of doses for immunity
-        + target_diseases : (array,required)
+        + target_diseases (array,required)
             + (Codeable_Concept ),//   Disease immunized against
                 +  coding (array)
                     + (Coding)
@@ -12809,7 +12825,7 @@ http code| processing method | Client recommendations
 + rejected_at: `2022-01-28` (string,optional,nullable) - Reject date - ISO 8601 date and time in UTC timezone.
 + rejected_by: `e8e5a969-74d8-4620-8496-f5e41f2e8312` (string,optional,nullable) - Rejected user identifier
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,optional,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,optional,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,optional) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -12861,7 +12877,7 @@ http code| processing method | Client recommendations
 + dosage_instruction (array,required)
     + (Dosage_Instruction)
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,optional,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,optional,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,optional) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -12919,7 +12935,7 @@ http code| processing method | Client recommendations
 + rejected_at: `2022-01-28` (string,optional,nullable) - Reject date - ISO 8601 date and time in UTC timezone.
 + rejected_by: `e8e5a969-74d8-4620-8496-f5e41f2e8312` (string,optional,nullable) - Rejected user identifier
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,optional,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,optional,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,optional) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -12979,7 +12995,7 @@ http code| processing method | Client recommendations
 + rejected_at: `2022-01-28` (string,optional,nullable) - Reject date - ISO 8601 date and time in UTC timezone.
 + rejected_by: `e8e5a969-74d8-4620-8496-f5e41f2e8312` (string,optional,nullable) - Rejected user identifier
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,optional,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,optional,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,optional) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -13037,7 +13053,7 @@ http code| processing method | Client recommendations
 + rejected_at: `2022-01-28` (string,optional,nullable) - Reject date - ISO 8601 date and time in UTC timezone.
 + rejected_by: `e8e5a969-74d8-4620-8496-f5e41f2e8312` (string,optional,nullable) - Rejected user identifier
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,optional,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,optional,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,required) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -13089,7 +13105,7 @@ http code| processing method | Client recommendations
 + dosage_instruction (array,required)
     + (Dosage_Instruction)
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,required,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,required,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,optional) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -13200,7 +13216,7 @@ http code| processing method | Client recommendations
 + rejected_at: `2022-01-28` (string,optional,nullable) - Reject date - ISO 8601 date and time in UTC timezone.
 + rejected_by: `e8e5a969-74d8-4620-8496-f5e41f2e8312` (string,optional,nullable) - Rejected user identifier
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,optional,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,optional,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,optional) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -13258,7 +13274,7 @@ http code| processing method | Client recommendations
 + rejected_at: `2022-01-28` (string,optional,nullable) - Reject date - ISO 8601 date and time in UTC timezone.
 + rejected_by: `e8e5a969-74d8-4620-8496-f5e41f2e8312` (string,optional,nullable) - Rejected user identifier
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,required,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,required,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
 + block_reason_code: BLOCK_WRONG_QTY_DRUG (string,required) - Block or unblock reason code `Dictionary MEDICATION_REQUEST_BLOCK_REASON`
 + include MR_MRR_additional_fields
@@ -13410,7 +13426,7 @@ http code| processing method | Client recommendations
 + rejected_at: `2022-01-28` (string,optional,nullable) - Reject date - ISO 8601 date and time in UTC timezone.
 + rejected_by: `e8e5a969-74d8-4620-8496-f5e41f2e8312` (string,optional,nullable) - Rejected user identifier
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
-+ reject_reason_code: PATIENT_REJECT (string,required,nullable,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
++ reject_reason_code: PATIENT_REJECT (string,required,nullable) - `Dictionary MEDICATION_REQUEST_REJECT_REASON`
 + include MR_MRR_additional_fields
 
 ## `Medication Dispense`
@@ -14105,7 +14121,7 @@ http code| processing method | Client recommendations
             + coding (array)
                 + (Coding)
                     + code: encounter (string)
-+ author:  (Reference_request,required)
++ author (Reference_request,required)
     + identifier (Identifier)
         + type (Codeable_Concept)
             + coding (array)
