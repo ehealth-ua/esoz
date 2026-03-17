@@ -367,7 +367,7 @@ Nonce payload example:
         + data (object)
            + token: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJtaXRocmlsLWxvZ2luIiwiZXhwIjoxNTIzNDM5MjAxLCJpYXQiOjE1MjM0MzgzMDEsImlzcyI6IkVIZWFsdGgiLCJqdGkiOiJlZmUxZjA4ZS1kNGI0LTRjZWYtYTAyYy03OGVhNGExZGRhMjUiLCJuYmYiOjE1MjM0MzgzMDAsIm5vbmNlIjoxMjMsInN1YiI6MTIzLCJ0eXAiOiJhY2Nlc3MifQ.UZ6S92h3nAG-GKY_XUE1Rc6uR_BuqR8ufUJfMhhKtNmt7DkkQlU49qPXjL0LFddVz1E2DXi2a-BQ0FG-DHsTHA' (string,required)
 
-### Deprecated Refresh Client Secret [PATCH /api/clients/{id}/connections/{connection_id}/actions/refresh_secret]
+### Deprecated Refresh Client Secret [PATCH /api/clients/{id}refresh_secret]
 
 ESOZ API ID: API-009-067-0002
 Scope: connection:refresh_secret
@@ -378,8 +378,7 @@ This method is used to refresh client secret for specified client connection
 Only legal entity owner can request new client secret for his own legal entity
 
 + Parameters
-    + id: `1380df72-275a-11e7-93ae-92361f002671` (string,required)
-    + connection_id: `e5372365-d47a-467f-81d0-f35117864352` (string,required)
+    + id: `1380df72-275a-11e7-93ae-92361f002671` (string)
 
 + Request (application/json)
     + Headers
@@ -532,7 +531,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
             + code: 201 (number)
         + data (Access_Token)
 
-### Reissuing Session Token [POST /oauth/tokens]
+### Reissuing Session Token [PATCH /oauth/tokens]
 
 ESOZ API ID: API-009-068-0003
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/17571315778/Use+Refresh+Token+for+Access+Token+extension">Reissuing Session Token</a>
@@ -673,6 +672,9 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 Service returns list of connections for specified client
 
 Service will return authorization error (403) if the requested client doesn't correspond with context
+
++ Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
     + Headers
@@ -2019,6 +2021,7 @@ This method is designed to obtain list of contracts with filters. This method re
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
 
@@ -2044,6 +2047,7 @@ This method is designed to get full information of contract by id.
 + Parameters
     + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required) - contract identifier
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -2075,6 +2079,7 @@ After contract request was signed by both sides signed contract request with pri
 + Parameters
     + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required) - contract identifier
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
 
@@ -2274,6 +2279,10 @@ Reimbursement version:
 }
 `
 
++ Parameters
+    + contract_type: CAPITATION (string,required)
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -2304,6 +2313,7 @@ This method is designed to get full information of contract request by id
 + Parameters
     + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required) - contract request identifier
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -2353,6 +2363,7 @@ This method is designed to obtain list of contract request with filters. This me
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -2379,6 +2390,7 @@ Only after that NHS employee can sign the contract request.
 + Parameters
     + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required)
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -2409,6 +2421,7 @@ This WS is designed to terminate contract request by contractor. Contract reques
 + Parameters
     + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required)
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -2444,6 +2457,7 @@ Get Contract Request Details and Get Contract Request Printout Content and sign 
 + Parameters
     + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required) - contract request identifier
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -2476,6 +2490,7 @@ In DS EDRPOU/DRFO must be equal to contractor_legal_entity.edrpou
 + Parameters
     + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required)
 
+    + contract_type: CAPITATION (string,required)
 + Request (application/json)
 
     + Headers
@@ -2538,6 +2553,7 @@ Method returns shortened data structure. Use [**Get Employee details**](https://
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
+    + verification_status: verification_status_value (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -3463,6 +3479,7 @@ More detailed information - https://e-health-ua.atlassian.net/wiki/x/BADDIw
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
+    + legal_entity_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -3669,6 +3686,15 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 This WS allows to see all patient's declarations and filter them.
 
++ Parameters
+    + end_date_from: end_date_from_value (string,optional)
+    + end_date_to: end_date_to_value (string,optional)
+    + page: 1 (number,optional)
+    + page_size: 50 (number,optional)
+    + start_date_from: start_date_from_value (string,optional)
+    + start_date_to: start_date_to_value (string,optional)
+    + status: status_value (string,optional)
+
 + Request (application/json)
     + Headers
         Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
@@ -3696,6 +3722,9 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 Current WS allows to see details of declaration knowing its' id.
 
++ Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+
 + Request (application/json)
     + Headers
         Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
@@ -3718,6 +3747,9 @@ Auth: yes
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/18690506972/DRAFT+REST+API+PIS.+Terminate+declaration">Terminate Declaration</a>
 
 Patient can terminate active declaration using this method.
+
++ Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
     + Headers
@@ -4091,6 +4123,16 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 This WS allows to see patient's declaration requests and filter them.
 If the request has been cleared of personal patient data due to security requirements,such data will not be returned
 
++ Parameters
+    + channel: channel_value (string,optional)
+    + end_date_from: end_date_from_value (string,optional)
+    + end_date_to: end_date_to_value (string,optional)
+    + page: 1 (number,optional)
+    + page_size: 50 (number,optional)
+    + start_date_from: start_date_from_value (string,optional)
+    + start_date_to: start_date_to_value (string,optional)
+    + status: status_value (string,optional)
+
 + Request (application/json)
     + Headers
         Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
@@ -4120,6 +4162,9 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 Current WS allows to see details of declaration request knowing its' id.
 If the request has been cleared of personal patient data due to security requirements,such data will not be returned
 
++ Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+
 + Request (application/json)
     + Headers
         Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9
@@ -4147,6 +4192,9 @@ Auth: yes
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/18694963201/DRAFT+REST+API+PIS.+Sign+Declaration+request">Sign Declaration Request</a>
 
 This WS allows patient to sign previously created declaration request
+
++ Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
     + Headers
@@ -4300,6 +4348,9 @@ Block merged_persons will be deprecated from response and endpoint `Search Perso
     + phone_number: `+380508887700` (string,optional)
     + birth_certificate: 123456 (string,optional) - birth_certificate is optional parameter for search
 
+    + birth_place: `Київ` (string,optional)
+    + page: 1 (number,optional)
+    + page_size: 50 (number,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -4598,6 +4649,8 @@ Returns care plan list filtered by submitted parameters withtin specified patien
     + page: 2 (number,optional) - Page number
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 100. Default: 50
 
+    + legal_entity_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + requisition: requisition_value (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -5355,6 +5408,9 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + asserted_date_from: `1990-01-01` (string,optional)
     + asserted_date_to: `2000-01-01` (string,optional)
 
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + encounter_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -5403,6 +5459,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + issued_from: `1990-01-01` (string,optional)
     + issued_to: `2000-01-01` (string,optional)
 
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + context_episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + encounter_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + initial_episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -5489,6 +5549,8 @@ The endpoint returns a list of short Encounter info filtered by search params.
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 100. Default: 50
 
+    + date_from: `2017-04-20` (string,optional)
+    + date_to: `2017-04-20` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -5541,6 +5603,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + date_from: `1990-01-01` (string,optional)
     + date_to: `2000-01-01` (string,optional)
 
+    + code: code_value (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -5699,6 +5762,7 @@ Use [**Get medication requests details**](https://esoz.docs.apiary.io/#reference
     + dispense_valid_to_start: `2017-03-26` (string,optional) - Start date of the period of dispense expiry date. Format DATE '2017-03-26'.
     + dispense_valid_to_end: `2017-03-30` (string,optional) - End date of the period of dispense expiry date. Format DATE '2017-03-30'.
 
+    + care_plan_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -6153,6 +6217,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 ### Dummy Reject Medication Request [PATCH /dummy/medication_requests/{id}/actions/reject]
 
 + Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
    + id: `eeebb86d-5cba-43c9-885b-6482ecaf826b` (string,required)
 
 + Request (application/json)
@@ -6416,6 +6481,7 @@ This method allows to get short information of the Medication Dispense for the M
 + Parameters
     + id: `a89f6a26-4221-4597-a1d2-542d5e40b565` (string,required)
 
+    + person_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -6481,6 +6547,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 ### Dummy Process Medication Dispense [PATCH /dummy/medication_dispenses/{id}/actions/process]
 
 + Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
    + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required)
 
 + Request (application/json)
@@ -6502,6 +6569,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 ### Dummy Process Medication Dispense by Pharmacy User [PATCH /dummy/pharmacy/medication_dispenses/{id}/actions/process]
 
 + Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
    + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required)
 
 + Request (application/json)
@@ -6664,6 +6732,7 @@ Use [**Get Medication Request Requests Details**](https://esoz.docs.apiary.io/#r
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
+    + care_plan_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer c2778f3064753ea70de870a53795f5c9
@@ -6805,6 +6874,9 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + asserted_date_to: `2000-01-01` (string,optional) 
     
 
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + encounter_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -6903,6 +6975,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + managing_organization_id: `887a37a4-c95f-4017-ba11-a000c61bf700` (string,optional)
     + specimen_id: `f48d1b6c-a021-4d6a-a5a4-aee93e152ecc` (string,optional)
 
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -6951,6 +7024,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + page: 2 (number,optional) - Page number.    
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 100. Default: 50
 
+    + episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + managing_organization_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + recorded_by: recorded_by_value (string,optional)
+    + service_request_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -7008,6 +7085,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 + Parameters
     + id: `7075e0e2-6b57-47fd-aff7-324806efa7e5` (string,optional) - Unique procedure identifier
 
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -7044,6 +7122,8 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + origin_episode_id: `ef30f210-5328-4f48-bfe6-c7150d4737a6` (string,optional) - Unique episode identifier,look into episode in procedures.origin_episode
     + device_id: `ef30f210-5328-4f48-bfe6-c7150d4737a6` (string,optional) - Device identifier
 
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + recorded_by: recorded_by_value (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -7072,6 +7152,10 @@ All signature fields will be validated (including signer certificate authority).
 2. status_reason and explanatory_letter (optional) must be added to signed content.
 
 Please see [Dummy Cancel Procedure](https://esoz.docs.apiary.io/#reference/medical-events/procedure/dummy-cancel-procedure) for more details.
+
++ Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + person_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
     + Headers
@@ -7160,6 +7244,9 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + asserted_date_from: `1990-01-01` (string,optional) 
     + asserted_date_to: `2000-01-01` (string,optional) 
     
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + encounter_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
+    + episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -7404,6 +7491,10 @@ This method must be used to cancel existing Service Request. Method receives sig
 
 Please see Service request Referral State Mdel and Dummy Cancel Service Request for more details.
 
++ Parameters
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + service_request_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -7437,6 +7528,10 @@ This method must be used to recall existing Service Request. Method receives sig
 * status_reason and explanatory_letter (optional) must be added to signed content
 
 Please see Service request Referral State Mdel and Dummy Cancel Service Request for more details.
+
++ Parameters
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + service_request_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
     + Headers
@@ -7688,6 +7783,9 @@ This service must be used to discover service requests relaated to specified Spe
 
 ### Dummy Service Request [POST /dummy/patients/{parent_id}/service_requests]
 
++ Parameters
+    + parent_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+
 + Request (application/json)
 
     + Headers
@@ -7705,6 +7803,10 @@ This service must be used to discover service requests relaated to specified Spe
         + data (Job)
 
 ### Dummy Cancel Service Request [PATCH /api/patients/{patient_id}/service_requests/{service_request_id}/actions/cancel/dummy]
+
++ Parameters
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + service_request_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
 
@@ -7730,6 +7832,10 @@ This service must be used to discover service requests relaated to specified Spe
         + data (Job)
 
 ### Dummy Recall Service Request [PATCH /api/patients/{parent_id}/service_requests/{service_request_id}/actions/recall/dummy]
+
++ Parameters
+    + parent_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + service_request_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
 
@@ -7767,6 +7873,9 @@ ESOZ API ID: API-007-027-0007
 Scope: episode:write
 Auth: yes
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/17571905741/REST+API+Create+Episode">Create Episode</a>
+
++ Parameters
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 
 + Request (application/json)
     + Headers
@@ -7934,6 +8043,10 @@ Scope: episode:write
 Auth: yes
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/17570759203/REST+API+Cancel+Episode">Cancel Episode</a>
 
++ Parameters
+    + episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+
 + Request  (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -8066,6 +8179,11 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + patient_id: `70a9e15b-b71b-4caf-8f2e-ff247e8a5677` (string,required) - Patient identifier
     + encounter_id: `a10aeafb-0df2-4091-bc83-f07e92a100ae` (string,required) - Encounter identifier
 
+    + episode_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + date_from: `2017-04-20` (string,optional)
+    + date_to: `2017-04-20` (string,optional)
+    + page: 1 (number,optional)
+    + page_size: 50 (number,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -8284,6 +8402,8 @@ If you have an approval - you can obtain episode details and nested entities thr
     + period_start_to: `2018-01-01` (string,optional)
     + period_end_from: `2017-01-01` (string,optional)
     + period_end_to: `2018-01-01` (string,optional)
+    + period_from: `2017-04-20` (string,optional)
+    + period_to: `2017-04-20` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -8377,6 +8497,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + patient_id: `7075e0e2-6b57-47fd-aff7-324806efa7e5` (string,required) - Unique patient identifier
     + composition_id: `aff00bf6-68bf-4b49-b66d-f031d48922b3` (string,required) - Unique composition identifier
     + form_type: INFO_CERTIFICATE(string,required) - Type of the print form
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -8505,6 +8626,9 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + page: 2 (number,optional) - Page number
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 100. Default: 50
 
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + date: `2017-04-20` (string,optional)
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,optional)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
@@ -8907,6 +9031,9 @@ The structure of PKCS-7 payload of signed_data attribute is described in Specime
 
 This chapter describes the structure of a single Specimen creation. This is not an actual web-service.
 
++ Parameters
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+
 + Request (application/json)
     + Headers
         api-key: aFBLVTZ6Z2dON1V
@@ -8935,6 +9062,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + page: 2 (number,optional) - Page number.    
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 100. Default: 50
 
+    + patient_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + Request (application/json)
     + Headers
         Authorization: Bearer mF_9.B5f-4.1JqM
