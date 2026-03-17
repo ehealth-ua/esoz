@@ -17659,7 +17659,7 @@ status: APPROVED (string,required)
 + division_id: `8be63914-a278-470b-b868-1af5b9087332` (string,required) - Division identifier
 + legal_entity_id: `483af06f-d4c6-4c9e-8d9b-680b5ef7270d` (string,required) - Legal entity identifier
 + include Equipment_base
-+ status: ACTIVE (string,required)
++ status: ACTIVE (enum,required)
     - ACTIVE
     - INACTIVE
 + is_active: true (boolean,required) - Technical attribute. Indicates the availability of therecord in the system
@@ -17985,7 +17985,7 @@ status: APPROVED (string,required)
 + parent_contract_id: `09106b70-18b0-4726-b0ed-6bda1369fd52` (string,optional)
 + id_form: PMD (string,required)
 + nhs_signed_date: `2017-04-20` (string,required) - Date when contract was signed by NHS
-+ type: CAPITATION (string,required)
++ type: CAPITATION (enum,required)
     - CAPITATION
     - REIMBURSEMENT
 + reason: `не було виконано умов контракту` (string,optional) - additional the reason of terminated status
@@ -18355,7 +18355,7 @@ status: APPROVED (string,required)
 + include Employee_role_base
 + start_date: `2019-04-20T19:14:13Z` (string,required)
 + end_date: `2017-12-20T19:14:13Z` (string,optional)
-+ status: ACTIVE (string,required)
++ status: ACTIVE (enum,required)
     - ACTIVE
     - INACTIVE
 + is_active: true (boolean,required) - Technical attribute. Indicates the availability of therecord in the system
