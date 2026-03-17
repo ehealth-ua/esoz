@@ -9649,7 +9649,7 @@ http code| processing method | Client recommendations
 + MFO: 351005 (string,required) - bank code
 + name: `Публічне акціонерне товариство «УкрСиббанк»` (string,required) - bank name
 + account_number(array,required)
-    + 32009102701026 (string,required) - banks account number
+    + 32009102701026 (string) - banks account number
 
 ### Owner_V2
 + first_name: Петро (string,required)
@@ -12566,22 +12566,22 @@ http code| processing method | Client recommendations
 ### Medical_program_settings
 + care_plan_required: true (boolean,required) - posibility to create medication request with reference on care plan
 + employee_types_to_create_medication_request (array,required) - posibility to create medication request for particular types of employees
-    + SPECIALIST (string,required)
-    + DOCTOR (string,required)    
+    + SPECIALIST (string)
+    + DOCTOR (string)    
 + skip_mnn_in_treatment_period: true (boolean,required) - posibility to create new medication request with the same mnn in one treatment period
 + skip_employee_validation: true (boolean,required) - posibility to create medication request by any user who has a scope
 + speciality_types_allowed (array,optional) - posibility to create medication request or care plan activity for particular specialities of employees
-    + ENDOCRINOLOGY (string,required)
-    + PEDIATRIC_NEUROLOGY (string,required)
+    + ENDOCRINOLOGY (string)
+    + PEDIATRIC_NEUROLOGY (string)
 + conditions_icd10_am_allowed (array,optional) - posibility to create medication request or care plan activity for particular conditions from ICD10_AM
-    + `A00.0` (string,required)
-    + `A00.1` (string,required)
+    + `A00.0` (string)
+    + `A00.1` (string)
 + conditions_icpc2_allowed (array,optional) - posibility to create medication request or care plan activity for particular conditions from ICPC2
-    + A01 (string,required)
-    + A02 (string,required)
+    + A01 (string)
+    + A02 (string)
 + providing_conditions_allowed (array,optional) - posibility to create care plan activity for particular terms of service. - `Dictionary PROVIDING_CONDITION`
-    + INPATIENT (string,required)
-    + OUTPATIENT (string,required)
+    + INPATIENT (string)
+    + OUTPATIENT (string)
 + medication_request_max_period_day: 90 (number,optional) - maximum period length (in days) allowed for the Medication request with the medical program
 + skip_medication_request_employee_declaration_verify: true (boolean,required) - allows to skip verification if employee has declaration with patient to create medication request
 + skip_medication_request_legal_entity_declaration_verify: true (boolean,required) - allows to skip verification if employee in legal entity that has declaration with patient to create medication request
@@ -12592,11 +12592,11 @@ http code| processing method | Client recommendations
 + medication_dispense_period_day: 90 (number,optional) - medication dispense period (in days)
 + medical_program_change_on_dispense_allowed: true (boolean,required) - check if medication request can be dispensed with another medical program.
 + patient_categories_allowed (array,optional) - posibility to create care plan activity for particular terms of service. - `Dictionary eHealth/clinical_impression_patient_categories`
-    + insulin_1 (string,required)
-    + insulin_2 (string,required)
+    + insulin_1 (string)
+    + insulin_2 (string)
 + license_types_allowed (array,optional) - the types of legal entity licenses required to dispense medication request - `Dictionary LICENSE_TYPE`
-    + PHARMACY (string,required)
-    + PHARMACY_DRUGS (string,required)
+    + PHARMACY (string)
+    + PHARMACY_DRUGS (string)
 + device_request_allowed_code_types (array,optional) - describes at which way a Device should be represented in care plan activity
     + CLASSIFICATION_TYPE
     + DEVICE_DEFINITION
@@ -15809,7 +15809,7 @@ http code| processing method | Client recommendations
                             + system: `eHealth/resources` (string)
                     + text: string (string,required)
                 + value: `781ccc01-36a5-4cb7-bc4a-ea3dca500367` (string,required)
-            + display_value (string,required)
+            + display_value (string)
         + text (object,optional)
             + status: generated (string,required)
             + div: `<div xmlns=\"http://www.w3.org/1999/xhtml\">...` (string,required)
@@ -17633,7 +17633,7 @@ status: APPROVED (string,required)
 + parent_contract_id: `09106b70-18b0-4726-b0ed-6bda1369fd52` (string,optional)
 + assignee_id: `22e416c4-5747-41cd-9f73-c3a85cdee885` (string,optional) - NHS employee which review contract request
 + medical_programs (array,required)
-    + `3914a240-63db-404e-b730-09222bfeb2d0` (string,required) - - ids of a medical programs that is a subject of reimbursment contract
+    + `3914a240-63db-404e-b730-09222bfeb2d0` (string) - - ids of a medical programs that is a subject of reimbursment contract
 + updated_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
 + inserted_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
 
@@ -17716,7 +17716,7 @@ status: APPROVED (string,required)
 + id_form: RMB (string,required)
 + parent_contract_id: `09106b70-18b0-4726-b0ed-6bda1369fd52` (string,optional)
 + medical_programs (array,required)
-    + `3914a240-63db-404e-b730-09222bfeb2d0` (string,required) - - ids of a medical programs that is a subject of reimbursment contract
+    + `3914a240-63db-404e-b730-09222bfeb2d0` (string) - - ids of a medical programs that is a subject of reimbursment contract
 + updated_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
 + inserted_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
 
@@ -17945,7 +17945,7 @@ status: APPROVED (string,required)
 + previous_request_id: `df9f70ee-4b12-4740-b0f5-bb5aea116863` (string,optional) - changed contract request id
 + assignee_id: `22e416c4-5747-41cd-9f73-c3a85cdee885` (string,optional) - NHS employee which review contract request
 + medical_programs (array,required)
-    + `3914a240-63db-404e-b730-09222bfeb2d0` (string,required) - - ids of a medical programs that is a subject of reimbursment contract
+    + `3914a240-63db-404e-b730-09222bfeb2d0` (string) - - ids of a medical programs that is a subject of reimbursment contract
 + updated_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
 + inserted_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
 
@@ -17971,7 +17971,7 @@ status: APPROVED (string,required)
 + start_date: `2017-04-20` (string,required) - contract start date
 + end_date: `2017-04-20` (string,required) - contract end date
 + medical_programs (array,required)
-    + `3914a240-63db-404e-b730-09222bfeb2d0` (string,required) - - ids of a medical programs that is a subject of reimbursment contract
+    + `3914a240-63db-404e-b730-09222bfeb2d0` (string) - - ids of a medical programs that is a subject of reimbursment contract
 + id_form: `RMB-1` (string,required) - type of contract {DICTIONARY REIMBURSEMENT_CONTRACT_TYPE}
 + updated_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
 + inserted_at: `2017-04-20T19:14:13Z` (string,required) - ISO 8601 date and time in UTC timezone.
