@@ -605,10 +605,6 @@ active client of the system. The client_secret field must be passed if the
         + data (object)
            + token: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJtaXRocmlsLWxvZ2luIiwiZXhwIjoxNTIzNDM5MjAxLCJpYXQiOjE1MjM0MzgzMDEsImlzcyI6IkVIZWFsdGgiLCJqdGkiOiJlZmUxZjA4ZS1kNGI0LTRjZWYtYTAyYy03OGVhNGExZGRhMjUiLCJuYmYiOjE1MjM0MzgzMDAsIm5vbmNlIjoxMjMsInN1YiI6MTIzLCJ0eXAiOiJhY2Nlc3MifQ.UZ6S92h3nAG-GKY_XUE1Rc6uR_BuqR8ufUJfMhhKtNmt7DkkQlU49qPXjL0LFddVz1E2DXi2a-BQ0FG-DHsTHA' (string,required)
 
-## User Role
-
-## User Black List
-
 ## Client [/gen/client]
 
 ESOZ ENT ID: ENT-007
@@ -785,10 +781,6 @@ Deleted connection can't be restored and used again.
     + Attributes (object)
         + meta (Response__Meta,fixed-type)
 
-## Approval App [/gen/approval_app]
-
-API for adding authorized applications for ESOZ.
-
 # Group General
 
 ## System Dictionary [/gen/system_dictionary]
@@ -958,8 +950,6 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
                                   + child_values (array)
         + error (Response__Error)
 
-## System Configuration
-
 ## Addresses [/gen/addresses]
 
 API for searching Ukrainian Addresses.
@@ -1123,7 +1113,7 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 This resource should be used to get the processing status of the async job.
 
->Read more about [job processing algorithms.](https://e-health-ua.atlassian.net/wiki/spaces/EH/pages/583402225/Medical+events+Technical+Documentation)
+Read more about [job processing algorithms.](https://e-health-ua.atlassian.net/wiki/spaces/EH/pages/583402225/Medical+events+Technical+Documentation)
 
 + Parameters
     + id: NBXk9EyErUZv1RhXgyvgg (string,required) - request identifier
@@ -1194,7 +1184,6 @@ This resource should be used to get the processing status of the async job.
                 + (object)
                     + entity: detected_issue (string,required)
                     + href: `{host}/api/patients/3da18c10-d2ca-469e-bde5-7413201cea2/detected_issues/42e5985d-2a79-452f-8bc4-ed3a02fdefc6` (string,required)
-                
 
 + Response 403 (application/json)
     + Attributes (Response_OK)
@@ -1219,13 +1208,12 @@ This resource should be used to get the processing status of the async job.
         + data (Job_Error_404)
         + meta (Response__Meta)
             + code: 404 (number)
-   
+
 + Response 500 (application/json)
     + Attributes (Response_OK)
         + data (Job_Error_404)
         + meta (Response__Meta)
             + code: 500 (number)
-
 
 ## Medical Program [/api/medical_program]
 
@@ -1308,9 +1296,10 @@ This endpoint returns service program member by id. **Scopes required:** `progra
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_OK)
@@ -1330,25 +1319,16 @@ This web service returns a catalog of services that could be submitted in eHealt
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_OK)
         + meta (Response__Meta)
             + code: 200 (number)
         + data (Service_in_group)
-
-## Medical Program Participant
-
-## Service
-
-## Medication
-
-## Device Definition
-
-## Forbidden Group
 
 ## Groups of Diagnoses [/me/groups_of_diagnoses]
 
@@ -1372,8 +1352,9 @@ This endpoint returns current diagnoses related only to active episodes. In orde
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer mF_9.B5f-4.1JqM
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer mF_9.B5f-4.1JqM
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_Collection)
@@ -1381,13 +1362,9 @@ This endpoint returns current diagnoses related only to active episodes. In orde
             + (Diagnosis_Referrence_Condition)
             + (Diagnosis_Referrence_Condition_2)
 
-## Rule Engine Rule
-
-## System Global Parameters
-
 # Group Administrative
 
-## Divisions [/admin/divisions]
+## Divisions [/api/divisions]
 
 ESOZ ENT ID: ENT-022
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/17358684238/Division+ENT">Division</a>
@@ -1412,9 +1389,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_Collection_V2)
@@ -1431,15 +1409,18 @@ This method must be used to update existing division in the system.
 Note that different legal entity types can register specific division types and address types accordingly
 More details can be found [here](https://e-health-ua.atlassian.net/wiki/x/GQB7Iw).
 
+
 + Parameters
-    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
+    + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string)
 
 + Request (application/json)
-    + Attributes (crud_division_post)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+    + Attributes (crud_division_post)
 
 + Response 200 (application/json)
     + Attributes (Response_OK)
@@ -1454,14 +1435,16 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 This method must be used to create new division in the system.
 Note that different legal entity types can register specific division types and address types accordingly.
-More details can be found [here](https://e-health-ua.atlassian.net/wiki/x/GQB7Iw).
+More details can be found at: https://e-health-ua.atlassian.net/wiki/x/GQB7Iw.
 
 + Request (application/json)
-    + Attributes (crud_division_post)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+    + Attributes (crud_division_post)
 
 + Response 200 (application/json)
     + Attributes (Response_OK)
@@ -1479,9 +1462,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_OK)
@@ -1499,9 +1483,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_OK)
@@ -1519,9 +1504,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_OK)
@@ -1920,9 +1906,10 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
     + Attributes (object)
         + availability_status: damaged (string,required) - New equipment status
 
@@ -1930,8 +1917,8 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + Attributes (Response__Process_OK)
         + data (Equipment_response_v2)
             - availability_status: damaged (string,required) - New equipment status
-            
-### Licenses [/admin/licenses]
+
+## Licenses [/api/licenses]
 
 ESOZ ENT ID: ENT-036
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/17358946428/License">License</a>
@@ -1971,9 +1958,10 @@ Primary license must be added with `Create or Update Legal Entity` method.
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
     + Attributes (crud_licenses_post)
         + is_primary: false (boolean,required)
@@ -1984,14 +1972,14 @@ Primary license must be added with `Create or Update Legal Entity` method.
 
 + Response 200 (application/json)
 
-### Update License [PATCH /api/licenses]
+### Update License [PATCH /api/licenses/{id}]
 
 ESOZ API ID: API-005-036-0003
 Scope: license:write
 Auth: yes
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/17570136425/DRAFT+Update+license">Update License</a>
 
-This method must be used to update additional license (`is_primary=false`) for legal entity in the system.
+This method must be used to update additional license is_primary false for legal entity in the system.
 Primary license must be updated with `Create or Update Legal Entity` method.
 
 + Parameters
@@ -1999,9 +1987,10 @@ Primary license must be updated with `Create or Update Legal Entity` method.
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        API-key: uXhEczJ56adsfh3Ri9SUkc4en
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            API-key: uXhEczJ56adsfh3Ri9SUkc4en
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
     + Attributes (crud_licenses_post)
         + is_primary: false (boolean,required)
@@ -2045,8 +2034,9 @@ This method is designed to obtain list of contracts with filters. This method re
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response_Collection_V2)
@@ -2100,8 +2090,9 @@ After contract request was signed by both sides signed contract request with pri
 
 + Request (application/json)
     + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
+
+            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
+            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
 
 + Response 200 (application/json)
     + Attributes (Response__Process_OK)
@@ -3106,44 +3097,6 @@ Use this method to reject previously created Person Request.
             + channel: MIS (enum,required) - channel that invoke patient create service
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
 
-This method will be deprecated. Use **Reject Person Request v2**.
-
-Use this method to reject previously created Person Request.
-
-More detailed information - https://e-health-ua.atlassian.net/wiki/x/MYDAIw
-
-+ Parameters
-    + id: `eeebb86d-5cba-43c9-885b-6482ecaf826b` (string,required)
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-            api-key: uXhEczJ56adsfh3Ri9SUkc4en
-            X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
-
-+ Response 201 (application/json)
-    + Attributes (Response__Process_OK)
-        + meta (Response__Meta)
-            + code: 200 (number)
-        + data (object)
-            + status: SIGNED (enum,optional)
-                - NEW
-                - APPROVED
-                - SIGNED
-                - CANCELLED
-                - REJECTED
-            + id: `eeebb86d-5cba-43c9-885b-6482ecaf826b` (string,required)
-            + person (required)
-                + id: `13001c60-45a0-4b5a-b425-9505e1de18bd`(string,optional) - MPI id of the person
-                + include Person_info_Public
-            + patient_signed: false (boolean,required) - Person's evidence of sign the person request
-            + process_disclosure_data_consent: true (boolean,required) - Person's evidence of information about consent to data disclosure
-            + content: `Person content` (string,optional) - HTML document that MUST be shown to a end-user and signed by his key.
-            + channel: MIS (enum,required) - channel that invoke patient create service
-            + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional) - identifier of person's auth method
-
 ### Sign Person Request [PATCH /api/person_requests/{id}/actions/sign]
 
 ESOZ API ID: API-010-055-0004
@@ -3540,13 +3493,7 @@ More detailed information - https://e-health-ua.atlassian.net/wiki/x/N4DrJ
             Authorization: Bearer c2778f3064753ea70de870a53795f5c9
             api-key: uXhEczJ56adsfh3Ri9SUkc4en
             X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
-    
-    <!--+ Attributes (object)
-        + type: THIRD_PERSON (enum,optional)
-            - OTP
-            - OFFLINE
-            - THIRD_PERSON
-        + alias: husband (string,optional)-->
+
 
 + Response 200 (application/json)
     + Attributes (Response__Process_OK)
@@ -9521,7 +9468,7 @@ http code| processing method | Client recommendations
     + num_type: `кв.`
     + num: 144
 
-## Divisions
+## Division Structures
 
 ### Division
 + name: Бориспільське відділення Клініки Ноунейм (string,required) - the full name of division
@@ -9750,7 +9697,7 @@ http code| processing method | Client recommendations
 + inserted_at: `2005-10-30 10:45` (string,required) - timestamp
 + inserted_by: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required) - user id
 
-## Licenses
+## License Structures
 
 ### License
 + type: MSP (enum,required) - License type `Dictionary LICENSE_TYPE`
