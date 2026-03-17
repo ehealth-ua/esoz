@@ -9818,51 +9818,6 @@ http code| processing method | Client recommendations
             + code: 202 (number)
         + data (`Job`)
 
-## Composition [/gen/comp]
-
-### SOAP Get Actual Access Status for Drivers [POST /secret]
-
-+ Request (application/xml)
-    + Headers
-        SOAPAction: "http://example.com/GetUser"
-        Content-Type: text/xml; charset=utf-8
-
-    + Body
-        <?xml version="1.0" encoding="utf-8"?>
-            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                xmlns:urn="http://example.com/">
-                <soapenv:Header/>
-                <soapenv:Body>
-                    <urn:GetUser>
-                        <urn:UserID>12345</urn:UserID>
-                    </urn:GetUser>
-                </soapenv:Body>
-        </soapenv:Envelope>
-
-+ Response 200 (application/xml)
-    + Body
-        <?xml version="1.0" encoding="utf-8"?>
-        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-                <soapenv:Body>
-                    <GetUserResponse xmlns="http://example.com/">
-                        <User>
-                            <ID>12345</ID>
-                            <Name>John Doe</Name>
-                        </User>
-                    </GetUserResponse>
-                </soapenv:Body>
-        </soapenv:Envelope>
-
-# Group NHS-only Services
-
-## NHS Admin Registries
-
-## Monitor Justifications
-
-# Group Integrations
-
-## DGC [/gen/comp]
-
 # Data Structures
 
 ### `TIL_ChildValues`
