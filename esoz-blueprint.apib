@@ -6177,6 +6177,8 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
     + page: 2 (number,optional) - Page number.
     + page_size: 50 (number,optional) - A limit on the number of objects to be returned,between 1 and 300. Default: 50
 
++ Response 200 (application/json)
+
 
 ### Private Block Medication Request [PATCH /api/admin/medication_requests/{id}/actions/block]
 
@@ -7089,6 +7091,8 @@ This chapter describes the structure of a single procedure creation. This is not
         Authorization: Bearer mF_9.B5f-4.1JqM
         X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
     + Attributes (Procedure_Request)
++ Response 200 (application/json)
+
 
 ### Get Procedures by Id [GET /api/patients/{patient_id}/procedures/{id}]
 
@@ -8932,35 +8936,6 @@ Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/
         + data (Service_Request_Show)
 
 
-### Get Medication Request Details in Composition Context [GET /api/persons/{person_id}/compositions/{composition_id}/medication_requests/{id}]
-
-ESOZ API ID: API-007-009-0029
-Scope: composition:read
-Auth: yes
-Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/18528109137/DRAFT+REST+API+Get+Medication+Request+details+in+Composition+context+API-007-011-001-0490">Get Medication Request Details in Composition Context</a>
-
-Method returns Medication Request details in the context of Composition.
-User must have an approval on the composition from url.
-
-+ Parameters
-    + person_id: `5e661b15-a39a-4713-b18e-ba03a4a48ecc` (string,required) - Patient identifier
-    + composition_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required) - Composition identifier
-    + id: `48416485-cc98-46c4-8bba-e321de9e1ecd` (string,required) - Medication Request identifier
-
-+ Request (application/json)
-    + Headers
-        Authorization: Bearer c2778f3064753ea70de870a53795f5c9
-        X-Custom-PSK: a2aa05c76f3f2d91870f923a53cc8aa8f23bbc01a8238d1c2c26d4299715a7e4
-
-+ Response 200 (application/json)
-    + Attributes (Response_OK)
-        + meta (Response__Meta)
-        + data (object)
-            + include Medication_request_Public_Response_with_Medical_Program_min
-            + medication_info (object,required)
-                + include Innm_Dosage_for_Medication_request_Responce
-                + medication_remaining_qty: 10.23 (number,optional) - medication quantity allowed to dispense
-
 ### Get Medication Dispense Details in Composition Context [GET /api/persons/{person_id}/compositions/{composition_id}/medication_dispenses/{id}]
 
 ESOZ API ID: API-007-009-0030
@@ -9611,7 +9586,7 @@ http code| processing method | Client recommendations
     + house_type: `буд.`
     + house: 14
     + building_type: null
-    + building: 
+    + building: 1
     + num_type: `кв.`
     + num: 144
 
@@ -12666,7 +12641,7 @@ http code| processing method | Client recommendations
 + end_date: `2019-06-30` (string,optional) - Active to date
 + registry_number: `REG-1111` (string,optional) - Registry number
 + drlz_sku_id: 0404466792737630283703997321 (string,optional) - identifier of a product out of external DRLZ register 
-+ package_qty_divisible: TRUE (boolean,required) - package divisible flag
++ package_qty_divisible: true (boolean,required) - package divisible flag
 
 ### Qualify_by_ID_Request_for_Medication_request_Responce
 + include Qualify_Medication_request_Request_Responce
@@ -14220,7 +14195,7 @@ http code| processing method | Client recommendations
 + title: `History of present illness` (string,required)
 + code (object,required)
     + code (object,required)
-        + (Coding)
+        + include Coding
             + code: `11348-0` (string)
             + system: `http://loinc.org` (string)
             + display: `History of present illness` (string)
