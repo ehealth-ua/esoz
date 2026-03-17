@@ -2583,7 +2583,9 @@ For **DOCTOR,SPECIALIST,ASSISTANT,PHARMACIST,MED_ADMIN,LABORANT** or **MED_COORD
             + legal_entity (Legal_Entity_Short)
                 + legal_form: 140 (string,required) - `Business form of legal entity received from edr - Use dictionary LEGAL_FORM to show the name`
                 + owner_property_type: STATE (string,required) - `Dictionary OWNER_PROPERTY_TYPE`
-                + mis_verified: VERIFIED,NOT_VERIFIED (enum,required)
+                + mis_verified: VERIFIED (enum,required)
+                    - VERIFIED
+                    - NOT_VERIFIED
 
 ### Deactivate Employee [PATCH /api/employees/{id}/actions/deactivate]
 
@@ -2618,7 +2620,9 @@ Employee deactivation:
             + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
             + division (Division_Short)
                 + legal_entity (Legal_Entity_Short)
-            + status: STOPPED,ENTERED IN ERROR (enum,required)
+            + status: STOPPED (enum,required)
+                - STOPPED
+                - ENTERED IN ERROR
 
 ### PIS Get Employees [GET /api/pis/bulk/employees{?depth}]
 
@@ -2965,6 +2969,7 @@ More detailed information - https://e-health-ua.atlassian.net/wiki/x/KoAfIw
             + patient_signed: false (boolean,required) - Person's evidence of sign the person request
             + process_disclosure_data_consent: true (boolean,required) - Person's evidence of information about consent to data disclosure
             + channel: MIS (enum,required) - channel that invoke person request create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
         + urgent (object,required)
             + authentication_method_current (array[Authentication_Method],required)
@@ -3033,6 +3038,7 @@ Clients can use signed URL's to directly access [s3 storage](https://storage.ehe
             + process_disclosure_data_consent: true (boolean,required) - Person's evidence of information about consent to data disclosure
             + content: `Person content` (string,required) - HTML document that MUST be shown to a end-user and signed by his key.
             + channel: MIS (enum,required) - channel that invoke patient create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
 
 + Response 422 (application/json)
@@ -3082,6 +3088,7 @@ Use this method to reject previously created Person Request.
             + process_disclosure_data_consent: true (boolean,required) - Person's evidence of information about consent to data disclosure
             + content: `Person content` (string,optional) - HTML document that MUST be shown to a end-user and signed by his key.
             + channel: MIS (enum,required) - channel that invoke patient create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
 
 ### Sign Person Request [PATCH /api/person_requests/{id}/actions/sign]
@@ -3236,6 +3243,7 @@ Link to THIRD PERSON (`authentication_methods.value`) must be equal to confidant
             + patient_signed: false (boolean,required) - Person's evidence of sign the person request
             + process_disclosure_data_consent: true (boolean,required) - Person's evidence of information about consent to data disclosure
             + channel: MIS (enum,required) - channel that invoke person request create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
         + urgent (object,required)
             + authentication_method_current (array[Authentication_Method],required)
@@ -3304,6 +3312,7 @@ Clients can use signed URL's to directly access [s3 storage](https://storage.ehe
             + process_disclosure_data_consent: true (boolean,required) - Person's evidence of information about consent to data disclosure
             + content: `Person content` (string,required) - HTML document that MUST be shown to a end-user and signed by his key.
             + channel: MIS (enum,required) - channel that invoke patient create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
 
 + Response 422 (application/json)
@@ -3770,6 +3779,7 @@ To create declaration request based on active declaration in reorganized legal e
             + system_declaration_limit: 900 (number,optional) - Current doctor's limit based on speciality_officio
             + current_declaration_count: 675 (number,optional) - Number of declarations assigned to doctor
             + channel: MIS (enum,required) - channel that invoke declaration create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
 
         + urgent (object,required)
@@ -3842,6 +3852,7 @@ Clients can use signed URL's to directly access [s3 storage](https://storage.ehe
             + system_declaration_limit: 900 (number,optional) - Current doctor's limit based on speciality_officio
             + current_declaration_count: 675 (number,optional) - Number of declarations assigned to doctor
             + channel: MIS (enum,required) - channel that invoke declaration create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
             + data_to_be_signed (Decl_req_data_to_be_signed,required)
 
@@ -3889,6 +3900,7 @@ Use this method to reject previously created Declaration Request.
             + system_declaration_limit: 900 (number,optional) - Current doctor's limit based on speciality_officio
             + current_declaration_count: 675 (number,optional) - Number of declarations assigned to doctor
             + channel: MIS (enum,required) - channel that invoke declaration create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
             + data_to_be_signed (Decl_req_data_to_be_signed,optional)
 
@@ -3971,6 +3983,7 @@ This endpoint returns declaration requests that were created through V2 and V3. 
             + system_declaration_limit: 900 (number,optional) - Current doctor's limit based on speciality_officio
             + current_declaration_count: 675 (number,optional) - Number of declarations assigned to doctor
             + channel: MIS (enum,required) - channel that invoke declaration create service
+                - MIS
             + authorize_with: `cc949559-5dfe-420f-ac05-065e443b2cc6` (string,optional)- identifier of person's auth method
             + data_to_be_signed (Decl_req_data_to_be_signed,optional)
         + urgent (object,required)
@@ -4201,6 +4214,7 @@ Use this method to reject previously created Declaration Request.
             + division (Division_Details,required)
             + content: `Declaration content` (string,required) - HTML document that MUST be shown to a  - Should be defined on the client side.end-user and signed by hes key.
             + channel: MIS (enum,required) - channel that invoke declaration create service
+                - MIS
 
 ### Deprecated Get Declaration Request by Id [GET /api/declaration_requests/{id}]
 
@@ -9408,12 +9422,15 @@ http code| processing method | Client recommendations
 + number: `+380503410870` (string,required) - phone number in format '+38/'
 
 ### Email
-+ type: PERSONAL,PUBLIC (enum[string],required)
++ type: PERSONAL (enum[string],required)
+    - PERSONAL
+    - PUBLIC
 + email: `email@example.com` (string,required)
 
 ### Address
 + type: RESIDENCE (string,required) - `Dictionary ADDRESS_TYPE`. 
 + country: UA (enum[string],required) - `Dictionary COUNTRY`
+    - UA
 + area: Житомирська (string,required) - one of Ukraianian area
 + region: Бердичівський (string,optional) - district of area
 + settlement: Київ (string,required) - city name
@@ -9464,6 +9481,7 @@ http code| processing method | Client recommendations
 + email: email@example.com (string,required) - division's email
 + working_hours (workinghours) - optional field,business hours by each day weekly,doesn't make any influence on business process and will be shown on portal and map.
 + type: CLINIC (enum,required) - `Dictionary DIVISION_TYPE`
+    - CLINIC
 + legal_entity_id: `c8aadb87-ecb9-41ca-9ad4-ffdfe1dd89c9` (string,optional)
 + external_id: 3213213 (string,optional)
 + location (Location,optional) - optional field. geographical location,if it's empty,division won't be shown on a map.
@@ -9679,6 +9697,7 @@ http code| processing method | Client recommendations
 + reason: на підставі наказу №1111 (string,required) - the legit documents which prove the relationship between legal entities
 + reason_date: `2022-02-10` (string,optional) - the legit documents date
 + type: ACCESSION (enum,required) - reorganization type,dictionary LEGAL_ENTITY_REORGANIZATION_TYPES
+    - ACCESSION
 + is_active: true (boolean,required) - whether relationship between legal entities is active
     - Default: true
 + inserted_at: `2005-10-30 10:45` (string,required) - timestamp
@@ -9688,6 +9707,7 @@ http code| processing method | Client recommendations
 
 ### License
 + type: MSP (enum,required) - License type `Dictionary LICENSE_TYPE`
+    - MSP
 + license_number: fd123443 (string,optional)
 + issued_by: Кваліфікацйна комісія (string,required)
 + issued_date: `2022-02-28` (string,required)
@@ -10839,6 +10859,7 @@ http code| processing method | Client recommendations
                 + coding (array)
                     + (Coding)
                         + code: condition (enum)
+                            - condition
 + summary: `Some summary` (string,optional)
 + findings (array,optional)
     + (object)
@@ -13201,6 +13222,7 @@ http code| processing method | Client recommendations
 + request_number : `0000-243P-1X53-EH38` (string) - Public medication request human readable number
 + started_at: `2017-08-17` (string,required) - Start date of a treatment period,which is determined by the external system. Greater or equal to **created_at**. Format *DATE '2017-09-07'*
 + status: REJECTED (enum[string],required) - Medication Request status. Find available **statuses** on State Charts wiki page
+    - REJECTED
 + medical_program (Medical_Program_Response_without_settings,required)
 + reject_reason: `Incompatible drugs` (string,optional,nullable) - Medication request reject reason
 + block_reason: `Підозра на фрод` (string,optional) - Block or unblock reason description
@@ -13817,6 +13839,7 @@ http code| processing method | Client recommendations
 + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + position: P6 (string,required) - `Dictionary POSITION`
 + employee_type: doctor (enum) - `Dictionary EMPLOYEE_TYPE`
+    - doctor
 
 ### Medical_Program_Response_min
 + id: `c7d52544-0bd4-4129-97b0-2d72633e0490` (string,required) - Internal medical program ID,a UUID string.
@@ -15739,12 +15762,12 @@ http code| processing method | Client recommendations
     + coding (array)
         + (Coding)
             + system: device_request_code_parameter (enum)
-- One Of
-    - value_codeable_concept (Codeable_Concept)
-    - value_quantity (Quantity,optional)
-    - value_range (Range,optional)
-    - value_boolean (boolean,optional)
-    - value_string (string,optional)
+                - One Of
+                - value_codeable_concept (Codeable_Concept)
+                - value_quantity (Quantity,optional)
+                - value_range (Range,optional)
+                - value_boolean (boolean,optional)
+                - value_string (string,optional)
 
 ### Composition_Full_Response
 + id: `781ccc01-36a5-4cb7-bc4a-ea3dca500367` (string,required) - `Identifier of composition`
@@ -16126,6 +16149,7 @@ http code| processing method | Client recommendations
 
 ### Medication_request_Request_Sign
 + category: community (enum,required)
+    - community
 + created_at: `2018-11-13` (string,required) - Medication request creation date,which is determined by the external system. Format *DATE '2017-09-07'*
 + dispense_valid_from: `2018-11-13` (string,required) - Start date of dispense period,which is determined by the external system. Format *DATE '2017-09-07'*
 + dispense_valid_to: `2018-12-13` (string,required) - End date of dispense period,which is determined by the external system. Greater or equal to **dispense_valid_from**. Format *DATE '2017-10-07'*
@@ -16252,7 +16276,9 @@ http code| processing method | Client recommendations
 + birth_date: `1991-08-19` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + tax_id: 3126509816 (string,optional)
 + secret: secret (string,required)
@@ -16272,7 +16298,9 @@ http code| processing method | Client recommendations
 + birth_date: `1991-08-19` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + tax_id: 3126509816 (string,optional)
 + secret: secret (string,required)
@@ -16293,7 +16321,9 @@ http code| processing method | Client recommendations
 + birth_date: `1991-08-19` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + tax_id: 3126509816 (string,optional)
 + secret: secret (string,required)
@@ -16315,7 +16345,9 @@ http code| processing method | Client recommendations
 + birth_date: `1991-08-19` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: confidant_person@example.com (string,optional)
 + tax_id: 3126509816 (string,optional)
 + secret: secret (string,required)
@@ -16337,7 +16369,9 @@ http code| processing method | Client recommendations
 + birth_date: `1972-10-26` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + tax_id: 2659719350 (string,optional)
 + secret: secret (string,required)
 + unzr: `19900101-00099` (string,optional)
@@ -16361,7 +16395,9 @@ http code| processing method | Client recommendations
 + birth_date: `1972-10-26` (string,optional)
 + birth_country: `Україна` (string,optional)
 + birth_settlement: `Вінниця` (string,optional)
-+ gender: MALE,FEMALE (enum[string],optional)
++ gender: MALE (enum[string],optional)
+    - MALE
+    - FEMALE
 + tax_id: 2659719350 (string,optional)
 + secret: secret (string,optional)
 + unzr: `19900101-00099` (string,optional)
@@ -16390,7 +16426,9 @@ http code| processing method | Client recommendations
 + confidant_person (object,required)
     + person_id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required) - confidant person identifier
     + name: Петров А.А. (string,required) - confidant person name,masked
-    + gender: MALE,FEMALE (enum[string],optional)
+    + gender: MALE (enum[string],optional)
+        - MALE
+        - FEMALE
     + tax_id: ******50 (string,optional) - confidant person tax id,masked
     + no_tax_id: false (boolean,required) - fact of declining tax_id
     + unzr: `**********99` (string,optional) - unzr (if exists),masked
@@ -16569,7 +16607,9 @@ http code| processing method | Client recommendations
 + confidant_person (object,optional)
     + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required) - confidant person identifier
     + name: Петров А.А. (string,required) - confidant person name,masked
-    + gender: MALE,FEMALE (enum[string],optional)
+    + gender: MALE (enum[string],optional)
+        - MALE
+        - FEMALE
     + tax_id: ******50 (string,optional) - confidant person tax id,masked
     + no_tax_id: false (boolean,required) - fact of declining tax_id
     + unzr: `**********99` (string,optional) - unzr (if exists),masked
@@ -16751,8 +16791,8 @@ http code| processing method | Client recommendations
 + person_id: `50320ee5-2bca-472c-a1a0-28e2e003ec2a` (string,optional) - Merge candidate identifier
 + master_person_id: `cb553981-4b7f-45ec-8f73-f77faf2dcb22` (string,optional) - Master person identifier
 + status: NEW (enum,optional) - Record status
-        - NEW
-        - MERGED
+    - NEW
+    - MERGED
 + inserted_at: `1991-08-19T00:00:00.000Z` (string,required) - ISO Datetime.
 + updated_at: `1991-08-19T00:00:00.000Z` (string,required) - ISO Datetime.
 
@@ -16826,7 +16866,9 @@ http code| processing method | Client recommendations
     + birth_date: `1991-08-19` (string,required)
     + birth_country: `Україна` (string,required)
     + birth_settlement: `Вінниця` (string,required)
-    + gender: MALE,FEMALE (enum[string],required)
+    + gender: MALE (enum[string],required)
+        - MALE
+        - FEMALE
     + email: email@example.com (string,optional)
     + tax_id: 3126509816 (string,optional)
     + secret: secret (string,required)
@@ -17058,6 +17100,7 @@ http code| processing method | Client recommendations
 + inserted_at: `2017-03-02T10:45:16.000Z` (string,optional)
 + updated_at: `2017-03-02T10:45:16.000Z` (string,optional)
 + channel: CABINET (enum,required) - channel that invoke declaration create service
+    - CABINET
 
 ### Declaration_list_cabinet
 + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required) - unique id of declaration
@@ -17109,6 +17152,7 @@ status: APPROVED (string,required)
 + end_date: `2017-03-02` (string,required) - Will be defined on eHealth side if it's not set.
 + content: `Declaration content` (string,required) - HTML document that MUST be shown to a  - Should be defined on the client side.end-user and signed by hes key.
 + channel: MIS (enum,required) - channel that invoke declaration create service
+    - MIS
 + person (object,required) - Object that described a Patient. Confidant person should be set for disabled persons,underage persons,etc.
     + id: `5fb57a5d-1457-430e-9678-c81cec72779f` (string,required )
     + include Person_info_Public_DRv3
@@ -17131,7 +17175,9 @@ status: APPROVED (string,required)
 + birth_date: `2009-07-05` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + no_tax_id: false (boolean,required)
 + tax_id: 3999869394 (string,optional)
@@ -17159,7 +17205,9 @@ status: APPROVED (string,required)
 + birth_date: `2009-07-05` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + no_tax_id: false (boolean,required)
 + tax_id: 3999869394 (string,optional)
@@ -17187,7 +17235,9 @@ status: APPROVED (string,required)
 + birth_date: `2009-07-05` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + no_tax_id: false (boolean,required)
 + tax_id: 3999869394 (string,optional)
@@ -17215,7 +17265,9 @@ status: APPROVED (string,required)
 + birth_date: `2009-07-05` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + no_tax_id: false (boolean,required)
 + tax_id: 3999869394 (string,optional)
@@ -17266,7 +17318,9 @@ status: APPROVED (string,required)
 + birth_date: `2009-07-05` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + no_tax_id: false (boolean,required)
 + tax_id: 3999869394 (string,optional)
@@ -17301,7 +17355,9 @@ status: APPROVED (string,required)
 + birth_date: `2009-07-05` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + no_tax_id: false (boolean,required)
 + tax_id: 3999869394 (string,optional)
@@ -17338,7 +17394,12 @@ status: APPROVED (string,required)
 + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + position: P1 (string,required) - `Dictionary: POSITION`
 + employee_type: DOCTOR (string) - `Dictionary: EMPLOYEE_TYPE`
-+ status: APPROVED,STOPPED,ENTERED IN ERROR,REORGANIZED,AUTODEACTIVATED (enum,required) - Employee status
++ status: APPROVED (enum,required) - Employee status
+    - APPROVED
+    - STOPPED
+    - ENTERED IN ERROR
+    - REORGANIZED
+    - AUTODEACTIVATED
 + start_date: `2017-03-02T10:45:16.000Z` (string,required)
 + end_date: `2018-03-02T10:45:16.000Z` (string,optional)
 + party (object)
@@ -17383,7 +17444,9 @@ status: APPROVED (string,required)
 + birth_date: `1991-08-19` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + tax_id: 3126509816 (string,optional)
 + no_tax_id: true (boolean,required)
@@ -17665,6 +17728,7 @@ status: APPROVED (string,required)
 + nhs_signer_base: `на підставі наказу` (string,optional) - documents which allows to represent nhs
 + nhs_contract_price: 50000 (number,optional) - contract price
 + nhs_payment_method: BACKWARD (enum,optional) - payment method for contract (from CONTRACT_PAYMENT_METHOD dictionary)
+    - BACKWARD
 + status: VERIFIED (string,required) - contract status
 + reason: `не було виконано умов контракту` (string,optional) - additional the reason of terminated status
 + status_reason: default (string,optional) - the reason of terminated status
@@ -17702,6 +17766,7 @@ status: APPROVED (string,required)
         + include Contractor_divisions
 + nhs_signer_base: `на підставі наказу` (string,optional) - documents which allows to represent nhs
 + nhs_payment_method: BACKWARD (enum,optional) - payment method for contract (from CONTRACT_PAYMENT_METHOD dictionary)
+    - BACKWARD
 + status: VERIFIED (string,required) - contract status
 + status_reason: `не було виконано умов контракту` (string,optional) - the reason of terminated status
 + nhs_signer (object,optional)
@@ -17783,6 +17848,7 @@ status: APPROVED (string,required)
 + nhs_signer_base: `на підставі наказу` (string,optional) - documents which allows to represent nhs
 + nhs_legal_entity_id: `e5f76afb-4d96-4279-bcf1-0308457e6b64` (string,required)
 + nhs_payment_method: BACKWARD (enum,optional) - payment method for contract (from CONTRACT_PAYMENT_METHOD dictionary)
+    - BACKWARD
 + is_suspended: false (boolean,required) - whether the contract is active or temporary suspended
 + issue_city: `Київ` (string,optional) - place of contract request
 + nhs_contract_price: 50000 (number,optional) - contract price
@@ -17896,6 +17962,7 @@ status: APPROVED (string,required)
 + nhs_signer_base: `на підставі наказу` (string,optional) - documents which allows to represent nhs
 + nhs_contract_price: 50000 (number,optional) - contract price
 + nhs_payment_method: BACKWARD (enum,optional) - payment method for contract (from CONTRACT_PAYMENT_METHOD dictionary)
+    - BACKWARD
 + status: NEW (string,required) - contract_request status
 + status_reason: `Не відповідає попереднім домовленостям`(string,optional) - reason of status that was set
 + issue_city: `Київ` (string,optional) - place of contract request
@@ -17933,6 +18000,7 @@ status: APPROVED (string,required)
 + nhs_signer_base: `на підставі наказу` (string,optional) - documents which allows to represent nhs
 + nhs_contract_price: 50000 (number,optional) - contract price
 + nhs_payment_method: BACKWARD (enum,optional) - payment method for contract (from CONTRACT_PAYMENT_METHOD dictionary)
+    - BACKWARD
 + status: NEW (string,required) - contract_request status
 + status_reason: `Не відповідає попереднім домовленостям`(string,optional) - reason of status that was set
 + issue_city: `Київ` (string,optional) - place of contract request
@@ -17965,6 +18033,7 @@ status: APPROVED (string,required)
 + nhs_signer_base: `на підставі наказу` (string,optional) - documents which allows to represent nhs
 + issue_city: `Київ` (string,optional) - place of contract request
 + nhs_payment_method: BACKWARD (enum,optional) - payment method for contract (from CONTRACT_PAYMENT_METHOD dictionary)
+    - BACKWARD
 + contract_number: `0000-9EAX-XT7X-3115` (string,optional) - human readable number of contract request.
 + contract_id: `df9f70ee-4b12-4740-b0f5-bb5aea116863` (string,optional) - contract id
 + parent_contract_id: `22e416c4-5747-41cd-9f73-c3a85cdee885` (string,optional) - parent contract id
@@ -17991,6 +18060,7 @@ status: APPROVED (string,required)
 + issue_city: `Київ` (string,optional) - place of contract request
 + nhs_contract_price: 50000 (number,optional) - contract price
 + nhs_payment_method: BACKWARD (enum,optional) - payment method for contract (from CONTRACT_PAYMENT_METHOD dictionary)
+    - BACKWARD
 + contract_number: `0000-9EAX-XT7X-3115` (string,optional) - human readable number of contract request.
 + contract_id: `df9f70ee-4b12-4740-b0f5-bb5aea116863` (string,optional) - contract id
 + parent_contract_id: `22e416c4-5747-41cd-9f73-c3a85cdee885` (string,optional) - parent contract id
@@ -18019,14 +18089,20 @@ status: APPROVED (string,required)
 + position: P8 (string,required) - `Dictionary POSITION`
 + start_date: `2017-03-02T10:45:16.000Z` (string,optional) - required on update an employee
 + end_date: `2018-03-02T10:45:16.000Z` (string,optional)
-+ status: NEW,REJECTED,APPROVED (enum,required)
++ status: NEW (enum,required)
+    - NEW
+    - REJECTED
+    - APPROVED
 + employee_type: DOCTOR (string,required) - `Dictionary EMPLOYEE_TYPE`
 + party (Party_Request_old)
 + doctor (DoctorNew,optional)
 
 ### Employee_Request_Short
 + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
-+ status: NEW,REJECTED,APPROVED (enum,required)
++ status: NEW (enum,required)
+    - NEW
+    - REJECTED
+    - APPROVED
 + inserted_at: `2018-03-02T10:45:16.000Z` (string,required)
 + edrpou: 5432345432 (string,required)
 + legal_entity_name: Клініка Ноунейм (string,required)
@@ -18045,7 +18121,12 @@ status: APPROVED (string,required)
 + id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string,required)
 + position: P1 (string,required) - `Dictionary: POSITION`
 + employee_type: DOCTOR (string) - `Dictionary: EMPLOYEE_TYPE`
-+ status: APPROVED,STOPPED,ENTERED IN ERROR,AUTODEACTIVATED,REORGANIZED (enum,required) - Employee status
++ status: APPROVED (enum,required) - Employee status
+    - APPROVED
+    - STOPPED
+    - ENTERED IN ERROR
+    - AUTODEACTIVATED
+    - REORGANIZED
 + start_date: `2017-03-02T10:45:16.000Z` (string,required)
 + end_date: `2018-03-02T10:45:16.000Z` (string,optional)
 + party (object)
@@ -18098,7 +18179,12 @@ status: APPROVED (string,required)
 + position: P8 (string,required) - `Dictionary POSITION`
 + start_date: `2017-03-02T10:45:16.000Z` (string,required)
 + end_date: `2018-03-02T10:45:16.000Z` (string,optional)
-+ status: APPROVED,STOPPED,ENTERED IN ERROR,REORGANIZED,AUTODEACTIVATED (enum,required)
++ status: APPROVED (enum,required)
+    - APPROVED
+    - STOPPED
+    - ENTERED IN ERROR
+    - REORGANIZED
+    - AUTODEACTIVATED
 + is_active: true (boolean,required)
 + employee_type: DOCTOR (string,required) - `Dictionary EMPLOYEE_TYPE`
 + party (Party_Response_old)
@@ -18229,7 +18315,9 @@ status: APPROVED (string,required)
 + birth_date: `1991-08-19` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + tax_id: 3126509816 (string,optional)
 + no_tax_id: true (boolean,required)
@@ -18382,6 +18470,7 @@ status: APPROVED (string,required)
 + content: `Declaration content` (string,required) - HTML document
 + data_to_be_signed (Declaration_request_data_to_be_signed,required)
 + channel: PIS (enum,required) - channel that invoke declaration create service
+    - PIS
 
 ### Declaration_request_data_to_be_signed
 + id: `b099f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required)
@@ -18392,6 +18481,7 @@ status: APPROVED (string,required)
 + end_date: `2017-03-02` (string,required) - Will be defined on eHealth side if it's not set.
 + content: `Declaration content` (string,required) - HTML document that MUST be shown to a  - Should be defined on the client side.end-user and signed by hes key.
 + channel: PIS (enum,required) - channel that invoke declaration create service
+    - PIS
 + person (object,required) - Object that described a Patient. Confidant person should be set for disabled persons,underage persons,etc.
     + id: `5fb57a5d-1457-430e-9678-c81cec72779f` (string,required )
     + include Data_to_be_signed_PersonDetails
@@ -18411,7 +18501,9 @@ status: APPROVED (string,required)
 + birth_date: `2009-07-05` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + email: email@example.com (string,optional)
 + no_tax_id: false (boolean,required)
 + tax_id: 3999869394 (string,optional)
@@ -18449,7 +18541,9 @@ status: APPROVED (string,required)
 + birth_date: `1972-10-26` (string,required)
 + birth_country: `Україна` (string,required)
 + birth_settlement: `Вінниця` (string,required)
-+ gender: MALE,FEMALE (enum[string],required)
++ gender: MALE (enum[string],required)
+    - MALE
+    - FEMALE
 + tax_id: 2659719350 (string,optional)
 + secret: secret (string,required)
 + unzr: `19900101-00099` (string,optional)
@@ -18483,6 +18577,7 @@ status: APPROVED (string,required)
 + status_reason: manual_employee (string,optional)
 + data_to_be_signed (Declaration_request_data_to_be_signed,optional)
 + channel: PIS (enum,required) - channel that invoke declaration create service
+    - PIS
 
 ### Sign_Declaration_Request_Response_PIS
 + id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string,required)
@@ -18497,6 +18592,7 @@ status: APPROVED (string,required)
 + content: `Declaration content` (string,required) - HTML document
 + data_to_be_signed (Declaration_request_data_to_be_signed,required)
 + channel: PIS (enum,required) - channel that invoke declaration create service
+    - PIS
 
 ## Service Request
 
