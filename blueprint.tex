@@ -55,13 +55,13 @@ SCOPUS: \url{https://www.scopus.com/authid/detail.uri?authorId=57214352719}
 ORCID: \url{https://orcid.org/0000-0001-7127-8796}
 
 \begin{abstract}
-У статті проведено порівняльний аналіз чотирьох активно підтримуваних інструментів рендерингу API-документації у форматі Apiary 1A (API Blueprint): \textbf{Blueprinter}, \textbf{Aglio}, \textbf{Api-blueprint-boilerplate} та \textbf{Phpdraft}. Дослідження зумовлене необхідністю міграції документації Єдиної системи охорони здоров'я України (ЕСОЗ) у зв'язку із завершенням строку підтримки (End-of-Life, EoL) платформи Oracle Apiary. На підставі формалізованого набору критеріїв — повноти підтримки MSON, якості обробки попереджень парсера, зручності і подібності UI, автономності від хмарних сервісів Oracle та придатності до роботи з масштабними специфікаціями — обґрунтовано вибір \textbf{Blueprinter} як оптимального інструменту для безпомилкової міграції. Практичним артефактом дослідження є репозиторій \texttt{ehealth-ua/ONE-API} та мігрований файл \texttt{esoz-blueprint.apib}.
+У статті проведено порівняльний аналіз чотирьох активно підтримуваних інструментів рендерингу API-документації у форматі Apiary 1A (API Blueprint): \textbf{Blueprinter}, \textbf{Aglio}, \textbf{Api-blueprint-boilerplate} та \textbf{Phpdraft}. Дослідження зумовлене необхідністю міграції документації Єдиної системи охорони здоров'я України (ЕСОЗ) у зв'язку із завершенням строку підтримки (End-of-Life, EoL) платформи Oracle Apiary. На підставі формалізованого набору критеріїв — повноти підтримки MSON, якості обробки попереджень парсера, зручності і подібності UI, автономності від хмарних сервісів Oracle та придатності до роботи з масштабними специфікаціями — обґрунтовано вибір \textbf{Blueprinter} як оптимального інструменту для безпомилкової міграції. Практичним артефактом дослідження є репозиторій \texttt{ehealth-ua/esoz} та мігрований файл \texttt{esoz-blueprint.apib}.
 
 \textbf{Ключові слова:} API Blueprint, APIB, Oracle Apiary, ЕСОЗ, міграція документації, Blueprinter, Aglio, MSON, рендерер, сумісність.
 \end{abstract}
 
 \begin{abstract}
-This paper presents a comparative analysis of four actively maintained API Blueprint (Apiary 1A format) documentation rendering tools: Blueprinter, Aglio, Api-blueprint-boilerplate, and Phpdraft. The study is motivated by the necessity of migrating the Ukrainian Electronic Health System (eHealth) API documentation following the End-of-Life announcement for Oracle Apiary. Based on a formalized set of criteria — MSON support completeness, parser warning handling quality, UI ergonomics, independence from Oracle cloud services, and scalability for large specifications — \textbf{Blueprinter} is justified as the optimal migration target. The practical artifact of this research is the \texttt{ehealth-ua/ONE-API} repository and the migrated \texttt{esoz-blueprint.apib} specification file.
+This paper presents a comparative analysis of four actively maintained API Blueprint (Apiary 1A format) documentation rendering tools: Blueprinter, Aglio, Api-blueprint-boilerplate, and Phpdraft. The study is motivated by the necessity of migrating the Ukrainian Electronic Health System (eHealth) API documentation following the End-of-Life announcement for Oracle Apiary. Based on a formalized set of criteria — MSON support completeness, parser warning handling quality, UI ergonomics, independence from Oracle cloud services, and scalability for large specifications — \textbf{Blueprinter} is justified as the optimal migration target. The practical artifact of this research is the \texttt{ehealth-ua/esoz} repository and the migrated \texttt{esoz-blueprint.apib} specification file.
 
 \textbf{Keywords:} API Blueprint, APIB, Oracle Apiary, eHealth Ukraine, documentation migration, Blueprinter, Aglio, MSON, renderer, compatibility.
 \end{abstract}
@@ -232,7 +232,7 @@ K6: Активна підтримка & 2/5 & 2/5 & 4/5 & \textbf{5/5} \\
 \end{table}
 
 \section{Практична апробація: міграція \texttt{apiary.apib} $\rightarrow$ \texttt{esoz-blueprint.apib}}
-Для верифікації теоретичних висновків було проведено практичну міграцію у репозиторії \texttt{ehealth-ua/ONE-API}. Оригінальний файл \texttt{apiary.apib} (1 061 617 байт) було адаптовано до вимог Blueprinter та збережено як \texttt{esoz-blueprint.apib} (1 007 359 байт). Серед виконаних коригувань:
+Для верифікації теоретичних висновків було проведено практичну міграцію у репозиторії \texttt{ehealth-ua/esoz}. Оригінальний файл \texttt{apiary.apib} (1 061 617 байт) було адаптовано до вимог Blueprinter та збережено як \texttt{esoz-blueprint.apib} (1 007 359 байт). Серед виконаних коригувань:
 \begin{enumerate}
 \item \textbf{Усунення конструкцій \texttt{sub-types of primitive types should not have nested members}} — системне попередження, яке Blueprinter відображає явно, а Aglio ігнорує, проте генерує некоректний HTML.
 \item \textbf{Виправлення порожніх \texttt{Enum} секцій} — ідентифіковано та виправлено помилки \texttt{Enum element should include members}, що призводили до збоїв рендерингу.
@@ -269,7 +269,7 @@ blueprinter -i esoz-blueprint.apib -o index.html
 \item \textbf{Blueprinter} демонструє найвищу повноту підтримки формату API Blueprint 1A, мінімальну кількість помилок при рендерингу, сучасний та ергономічний UI, повну автономність від Oracle Apiary та відповідність технологічному стеку команди ЕСОЗ.
 \end{enumerate}
 
-Практична апробація підтвердила архітектурну правильність вибору: репозиторій \texttt{ehealth-ua/ONE-API} з мігрованим файлом \texttt{esoz-blueprint.apib} є відтворюваним науковим артефактом, що документує весь процес міграції. Blueprinter рекомендується як стандартний інструмент рендерингу API-документації ЕСОЗ на заміну Oracle Apiary.
+Практична апробація підтвердила архітектурну правильність вибору: репозиторій \texttt{ehealth-ua/esoz} з мігрованим файлом \texttt{esoz-blueprint.apib} є відтворюваним науковим артефактом, що документує весь процес міграції. Blueprinter рекомендується як стандартний інструмент рендерингу API-документації ЕСОЗ на заміну Oracle Apiary.
 
 У будь якому випадку апробація допомогла усунути всі помилки накопичені в ЕСОЗ за 5 років і провести попередню фільтрацію даних MSON
 для подальшої менш болісної конвертації в інші формати OpenAPI, не тідьки API Blueprint, а також Swagger.
