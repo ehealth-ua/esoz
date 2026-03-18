@@ -1,0 +1,10 @@
+tonpa@Sky-M4 one-api % npx blueprinter -i esoz-blueprint.apib -o index.html
+Warning at line 847: Action "GET /api/v2/dictionaries" already defined.
+Warning at line 2894: Action "GET /api/employee_roles/" already defined.
+Warning at line 3157: Action "PATCH /api/person_requests/{id}/actions/sign" already defined.
+Warning at line 4479: Action "GET /sign-in{?client_id,redirect_uri,scope}" already defined.
+Warning at line 4803: Action "POST /api/patients/{patient_id}/care_plans" already defined.
+Warning at line 4827: Action "PATCH /api/patients/{patient_id}/care_plans/{id}/actions/cancel" already defined.
+Warning at line 5176: Action "PATCH /api/patients/{patient_id}/care_plans/{care_plan_id}/activities/{id}/actions/cancel" already defined.
+Warning at line 5242: Action "POST /api/patients/{patient_id}/care_plans/{care_plan_id}/activities" already defined.
+Rendering done. Open "index.html" to see result.
