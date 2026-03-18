@@ -844,7 +844,7 @@ On all envoronments this endpoint DOESN'T require authentication with `address:r
                         + code: D88 (string,required) - code of the dictionary value
                         + description: `Апендицит` (string,required) - description of the code
 
-### MIS Get Dictionaries V2 [GET /api/v2/dictionaries{?name,is_active,value_code,value_description,value_is_active}]
+### MIS Get Dictionaries V2 [GET /api/v2/mis/dictionaries{?name,is_active,value_code,value_description,value_is_active}]
 
 ESOZ API ID: API-011-065-0002
 Link to Confluence: <a href="https://e-health-ua.atlassian.net/wiki/spaces/ESOZ/pages/17570627706/REST+API+Get+dictionary+v.2">MIS Get Dictionaries V2</a>
@@ -3154,7 +3154,9 @@ Look at [**Dummy Sign Person Request**](https://uaehealthapi.docs.apiary.io/#ref
         + data (Patient_short)
 
 
+<!--
 ### Get Person Request by Id [PATCH /api/person_requests/{id}/actions/sign]
+-->
 
 ESOZ API ID: API-010-055-0004
 Scope: person_request:write
@@ -4476,7 +4478,7 @@ User will see rendered registration page signed on PIS side and provided via que
 + Response 200 (text/html; charset=UTF-8)
     + Headers
 
-### Patient sign-in [GET /sign-in{?client_id,redirect_uri,scope,user_data,state}]
+### Patient sign-in [GET /api/patient-sign-in{?client_id,redirect_uri,scope,user_data,state}]
 
 ESOZ API ID: API-010-050-0005
 Scope: person:sign_in
@@ -4800,7 +4802,7 @@ http code| processing method | Client recommendations
             + code: 202 (number)
         + data (Job)
 
-### Dummy Care Plan [POST /api/patients/{patient_id}/care_plans]
+### Dummy Care Plan [POST /api/patients/{patient_id}/care_plans/dummy]
 
 + Parameters
     + patient_id: `7c3da506-804d-4550-8993-bf17f9ee0402` (string,required) - MPI identifier of the person.
@@ -4824,7 +4826,7 @@ http code| processing method | Client recommendations
             + code: 202 (number)
         + data (Job)
 
-### Dummy Cancel Care Plan [PATCH /api/patients/{patient_id}/care_plans/{id}/actions/cancel]
+### Dummy Cancel Care Plan [PATCH /api/patients/{patient_id}/care_plans/{id}/actions/cancel-dummy]
 
 + Parameters
     + patient_id: `7c3da506-804d-4550-8993-bf17f9ee0402` (string,required) - MPI identifier of the patient.
@@ -5173,7 +5175,7 @@ http code| processing method | Client recommendations
             + code: 202 (number)
         + data (Job)
 
-### Dummy Cancel Care Plan Activity [PATCH /api/patients/{patient_id}/care_plans/{care_plan_id}/activities/{id}/actions/cancel]
+### Dummy Cancel Care Plan Activity [PATCH /api/patients/{patient_id}/care_plans/{care_plan_id}/activities/{id}/actions/cancel-dummy]
 
 + Parameters
     + patient_id: `7c3da506-804d-4550-8993-bf17f9ee0402` (string,required) - MPI identifier of the patient.
@@ -5239,7 +5241,7 @@ http code| processing method | Client recommendations
             + code: 202 (number)
         + data (Job)
 
-### Dummy Create Care Plan Activity [POST /api/patients/{patient_id}/care_plans/{care_plan_id}/activities]
+### Dummy Create Care Plan Activity [POST /api/patients/{patient_id}/care_plans/{care_plan_id}/activities/dummy]
 
 + Parameters
     + patient_id: `7c3da506-804d-4550-8993-bf17f9ee0402` (string,required) - MPI identifier of the person.
